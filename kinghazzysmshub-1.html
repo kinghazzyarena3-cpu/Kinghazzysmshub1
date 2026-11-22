@@ -1,0 +1,72 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1">
+<title>KINGHAZZYSMSHUB — Business Messaging</title>
+<style>
+:root{--bg:#0b0d12;--panel:#141923;--panel2:#1a2230;--gold:#e7b84b;--muted:#9aa6b7;--line:#293244;--white:#f6f7fb}
+*{box-sizing:border-box}body{margin:0;background:var(--bg);color:var(--white);font:15px Inter,system-ui,Arial,sans-serif}
+button,input,select,textarea{font:inherit}button{cursor:pointer;border:0;border-radius:10px;padding:11px 15px;background:var(--gold);color:#17130a;font-weight:750}
+button.secondary{background:#252f40;color:#e8edf5;border:1px solid var(--line)}button:disabled{opacity:.5;cursor:not-allowed}
+header{height:70px;border-bottom:1px solid var(--line);display:flex;align-items:center;justify-content:space-between;padding:0 5%;position:sticky;top:0;background:#0b0d12ed;backdrop-filter:blur(10px);z-index:5}
+.brand{font-weight:900;letter-spacing:.7px}.brand span{color:var(--gold)}.user{color:var(--muted);font-size:13px}
+main{max-width:1150px;margin:32px auto;padding:0 20px}.hero{display:flex;justify-content:space-between;gap:20px;align-items:center;margin-bottom:24px}.eyebrow{color:var(--gold);font-size:11px;font-weight:800;letter-spacing:2px}.hero h1{font-size:clamp(26px,4vw,38px);margin:8px 0}.muted{color:var(--muted)}.pill{display:inline-block;border:1px solid #6d5727;color:#f1cf78;background:#2a2314;padding:6px 10px;border-radius:99px;font-size:11px}
+.stats{display:grid;grid-template-columns:repeat(3,1fr);gap:14px;margin:20px 0}.card{background:var(--panel);border:1px solid var(--line);border-radius:16px;padding:19px}.stat-label{font-size:12px;color:var(--muted)}.stat-value{font-size:27px;font-weight:800;margin-top:9px}.layout{display:grid;grid-template-columns:220px 1fr;gap:18px}.nav{display:flex;flex-direction:column;gap:7px;height:max-content}.nav button{background:transparent;color:#bdc7d6;text-align:left;border:1px solid transparent}.nav button.active,.nav button:hover{background:#202838;border-color:var(--line);color:var(--gold)}.content{min-width:0}.section{display:none}.section.active{display:block}.section h2{margin:0 0 7px;font-size:21px}.section-head{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px;gap:12px}.formgrid{display:grid;grid-template-columns:1fr 1fr;gap:13px}.field{display:flex;flex-direction:column;gap:7px}.field.full{grid-column:1/-1}label{font-size:12px;color:#bdc7d6}input,select,textarea{background:#0e131c;border:1px solid var(--line);border-radius:9px;padding:12px;color:white;width:100%;outline:none}input:focus,select:focus,textarea:focus{border-color:var(--gold)}textarea{min-height:105px;resize:vertical}.actions{display:flex;gap:9px;flex-wrap:wrap;margin-top:15px}.tablewrap{overflow:auto}table{border-collapse:collapse;width:100%;min-width:500px}th,td{text-align:left;padding:13px 10px;border-bottom:1px solid var(--line);font-size:13px}th{color:var(--muted);font-weight:600}.empty{text-align:center;padding:30px;color:var(--muted)}.notice{padding:13px 15px;border-radius:10px;background:#292313;border:1px solid #5e4a20;color:#f2d58e;font-size:12px;line-height:1.5;margin-top:15px}.success{color:#7ed6a2}.small{font-size:12px}.servicegrid{display:grid;grid-template-columns:repeat(2,1fr);gap:12px}.service{background:var(--panel2);border:1px solid var(--line);border-radius:13px;padding:16px}.service h3{margin:0 0 7px;font-size:15px}.service p{color:var(--muted);font-size:12px;line-height:1.5}.service .tag{font-size:10px;color:var(--gold)}.toast{position:fixed;bottom:20px;left:50%;transform:translateX(-50%);background:#263449;border:1px solid #52617a;padding:12px 18px;border-radius:10px;display:none;z-index:10}.footer{text-align:center;color:#748093;font-size:11px;padding:35px 15px}
+@media(max-width:720px){.layout{grid-template-columns:1fr}.nav{display:grid;grid-template-columns:repeat(3,1fr)}.nav button{text-align:center;padding:10px 5px;font-size:12px}.stats{grid-template-columns:1fr}.hero{align-items:flex-start;flex-direction:column}.formgrid,.servicegrid{grid-template-columns:1fr}.user{display:none}}
+</style>
+</head>
+<body>
+<header><div class="brand">KINGHAZZY<span>SMSHUB</span></div><div class="user">BUSINESS MESSAGING PORTAL &nbsp; • &nbsp; <span class="pill">DEMO MODE</span></div></header>
+<main>
+<div class="hero"><div><div class="eyebrow">WELCOME TO YOUR BUSINESS HUB</div><h1>Manage your messaging business.</h1><div class="muted">A clean workspace for compliant business SMS and customer communications.</div></div><span class="pill">● Prototype</span></div>
+<div class="stats">
+ <div class="card"><div class="stat-label">DEMO WALLET BALANCE</div><div class="stat-value" id="balance">₦0.00</div><div class="muted small">Sample balance only</div></div>
+ <div class="card"><div class="stat-label">MESSAGES SENT</div><div class="stat-value" id="sent">0</div><div class="muted small">Demo activity</div></div>
+ <div class="card"><div class="stat-label">RECENT ORDERS</div><div class="stat-value" id="ordersCount">0</div><div class="muted small">Prototype records</div></div>
+</div>
+<div class="layout">
+ <nav class="nav">
+  <button class="active" data-tab="overview">⌂ &nbsp; Overview</button><button data-tab="services">▣ &nbsp; SMS services</button><button data-tab="compose">✉ &nbsp; Compose SMS</button><button data-tab="wallet">◈ &nbsp; Wallet</button><button data-tab="transactions">≡ &nbsp; Transactions</button><button data-tab="account">⚙ &nbsp; Account</button>
+ </nav>
+ <div class="content">
+  <section class="section active" id="overview"><div class="section-head"><div><h2>Overview</h2><div class="muted small">Your messaging activity at a glance.</div></div><button onclick="showTab('compose')">New message</button></div>
+   <div class="card"><h3>Get started</h3><p class="muted">Use this prototype to explore the dashboard. Connect an authorized SMS provider and payment processor before accepting customers or sending live messages.</p><div class="actions"><button onclick="showTab('services')">Explore services</button><button class="secondary" onclick="showTab('wallet')">View wallet</button></div></div>
+   <div class="notice">Demo only: wallet amounts, orders and message activity are stored only in this browser. No real SMS is sent and no real payment is collected.</div>
+  </section>
+  <section class="section" id="services"><div class="section-head"><div><h2>SMS services</h2><div class="muted small">Legitimate business messaging tools.</div></div></div>
+   <div class="servicegrid">
+    <div class="service"><div class="tag">OUTBOUND</div><h3>Business SMS campaigns</h3><p>Send service updates, appointment reminders and opted-in customer notifications.</p><button onclick="showTab('compose')">Compose message</button></div>
+    <div class="service"><div class="tag">INBOUND</div><h3>Customer reply inbox</h3><p>Receive and manage replies through a connected, authorized business SMS provider.</p><button class="secondary" onclick="toast('Inbox is a demo placeholder. Provider connection required.')">View inbox</button></div>
+    <div class="service"><div class="tag">SENDER ID</div><h3>Business sender identity</h3><p>Request a sender identity through the provider and follow local telecom rules.</p><button class="secondary" onclick="toast('Sender ID requests require provider approval.')">Learn more</button></div>
+    <div class="service"><div class="tag">REPORTING</div><h3>Delivery reports</h3><p>Review delivery status and campaign results once a provider is connected.</p><button class="secondary" onclick="toast('Reports appear after a live provider is connected.')">View reports</button></div>
+   </div>
+  </section>
+  <section class="section" id="compose"><div class="section-head"><div><h2>Compose SMS</h2><div class="muted small">Demo form for consent-based business messages.</div></div></div>
+   <div class="card"><div class="formgrid">
+    <div class="field"><label>Recipient phone number</label><input id="phone" placeholder="+234 800 000 0000" inputmode="tel"></div>
+    <div class="field"><label>Message purpose</label><select id="purpose"><option>Order or delivery update</option><option>Appointment reminder</option><option>Customer support reply</option><option>Opted-in service notification</option></select></div>
+    <div class="field full"><label>Message</label><textarea id="message" maxlength="300" placeholder="Write a useful message for a customer who has agreed to receive it..."></textarea><div class="muted small"><span id="count">0</span>/300 characters</div></div>
+    <div class="field full"><label><input type="checkbox" id="consent" style="width:auto;vertical-align:middle"> I confirm the recipient has agreed to receive this message.</label></div>
+   </div><div class="actions"><button onclick="sendDemo()">Create demo message</button></div><div class="muted small" style="margin-top:12px">This only creates a local sample record. It does not contact the recipient.</div></div>
+  </section>
+  <section class="section" id="wallet"><div class="section-head"><div><h2>Wallet</h2><div class="muted small">Prototype wallet — no real funds.</div></div></div>
+   <div class="card"><div class="stat-label">DEMO BALANCE</div><div class="stat-value" id="walletBalance">₦0.00</div><p class="muted small">Payment methods can be integrated after an authorized business payment account and secure backend are configured.</p><div class="actions"><button onclick="toast('Live deposits are not enabled in this prototype.')">Add funds</button><button class="secondary" onclick="toast('Withdrawals are not enabled in this prototype.')">Withdraw</button></div></div>
+   <div class="notice">Never collect card details, bank passwords, OTPs or payment PINs on this demo website. Use a regulated payment provider's hosted checkout.</div>
+  </section>
+  <section class="section" id="transactions"><div class="section-head"><div><h2>Transactions</h2><div class="muted small">Local demo activity.</div></div></div><div class="card tablewrap"><table><thead><tr><th>Reference</th><th>Type</th><th>Details</th><th>Status</th></tr></thead><tbody id="transactionsBody"><tr><td colspan="4" class="empty">No demo transactions yet.</td></tr></tbody></table></div></section>
+  <section class="section" id="account"><div class="section-head"><div><h2>Account settings</h2><div class="muted small">Business profile preview.</div></div></div><div class="card"><div class="formgrid"><div class="field"><label>Business name</label><input value="KINGHAZZYSMSHUB" readonly></div><div class="field"><label>Account type</label><input value="Business messaging" readonly></div><div class="field full"><label>Support email</label><input placeholder="support@yourdomain.com"></div><div class="field full"><label>Business website</label><input placeholder="https://yourdomain.com"></div></div><div class="notice">For launch, add a real domain, privacy policy, terms of service, support contact and provider-approved business details.</div></div></section>
+ </div>
+</div>
+</main>
+<div class="footer">© 2026 KINGHAZZYSMSHUB • Business messaging prototype • Demo mode</div><div class="toast" id="toast"></div>
+<script>
+let balance=0,sent=0,orders=0,rows=[];
+function money(n){return '₦'+n.toLocaleString('en-NG',{minimumFractionDigits:2,maximumFractionDigits:2})}
+function showTab(id){document.querySelectorAll('.section').forEach(x=>x.classList.toggle('active',x.id===id));document.querySelectorAll('.nav button').forEach(x=>x.classList.toggle('active',x.dataset.tab===id))}
+document.querySelectorAll('.nav button').forEach(b=>b.addEventListener('click',()=>showTab(b.dataset.tab)));
+document.getElementById('message').addEventListener('input',e=>document.getElementById('count').textContent=e.target.value.length);
+function toast(msg){let t=document.getElementById('toast');t.textContent=msg;t.style.display='block';clearTimeout(window.toastTimer);window.toastTimer=setTimeout(()=>t.style.display='none',2800)}
+function update(){['balance','walletBalance'].forEach(id=>document.getElementById(id).textContent=money(balance));document.getElementById('sent').textContent=sent;document.getElementById('ordersCount').textContent=orders;let body=document.getElementById('transactionsBody');body.innerHTML=rows.length?rows.map(r=>`<tr><td>${r.ref}</td><td>${r.type}</td><td>${r.detail}</td><td class="success">${r.status}</td></tr>`).join(''):'<tr><td colspan="4" class="empty">No demo transactions yet.</td></tr>'}
+function sendDemo(){let phone=document.getElementById('phone').value.trim(),msg=document.getElementById('message').value.trim();if(!phone||!msg){toast('Enter a phone number and message first.');return}if(!document.getElementById('consent').checked){toast('Please confirm recipient consent.');return}sent++;orders++;rows.unshift({ref:'DEMO-'+Date.now().toString().slice(-7),type:'SMS draft',detail:phone+' • '+msg.slice(0,35),status:'Saved locally'});update();toast('Demo message saved. Nothing was sent.');document.getElementById('message').value='';document.getElementById('count').textContent='0';document.getElementById('consent').checked=false}
+</script>
+</body></html>
